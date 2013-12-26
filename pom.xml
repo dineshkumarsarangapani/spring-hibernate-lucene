@@ -88,6 +88,12 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>${dependency.hibernate.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search</artifactId>
+			<version>4.3.0.Final</version>
+		</dependency>
 		<!-- Hibernate library dependency end -->
 
 		<dependency>

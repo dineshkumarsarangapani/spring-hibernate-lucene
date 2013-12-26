@@ -8,6 +8,6 @@
 <h1> 
 	Welcome to Lister Products !!!
 </h1>
-You can <a href="createProduct">create a product </a> and Search a product.
+You can <a href="addProduct">create a product </a> and Search a product.
 </body>
 </html>

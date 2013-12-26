@@ -6,18 +6,30 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.search.annotations.Analyze;
+import org.hibernate.search.annotations.DocumentId;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Store;
+
+
 @Entity
-@Table(name="contacts")
+@Table(name="products")
+@Indexed
 public class Product {
 
     @Id
     @Column(name="ID")
     @GeneratedValue
+    @DocumentId
     private Integer id;
 
-    @Column(name="NAME")
+    
+	@Column(name="NAME")
     private String name;
 
+	
     @Column(name="DESCRIPTION")
     private String description;
 
@@ -34,13 +46,15 @@ public class Product {
     private String currency;
 
 
-   
+    @Field(index = Index.YES, analyze = Analyze.YES, store = Store.NO)
     public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	@Field(index=Index.YES)
 	public String getDescription() {
 		return description;
 	}
@@ -77,4 +91,11 @@ public class Product {
     public void setId(Integer id) {
         this.id = id;
     }
+    
+    @Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", description="
+				+ description + ", category=" + category + ", price=" + price
+				+ ", uom=" + uom + ", currency=" + currency + "]";
+	}
 }
