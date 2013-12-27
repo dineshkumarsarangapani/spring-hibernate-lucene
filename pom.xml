@@ -128,6 +128,48 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<!-- Jersey -->
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>1.8</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-json</artifactId>
+			<version>1.8</version>
+		</dependency>
+		
+		<!-- Jersey + Spring -->
+		<dependency>
+			<groupId>com.sun.jersey.contribs</groupId>
+			<artifactId>jersey-spring</artifactId>
+			<version>1.8</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-web</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-beans</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
 	</dependencies>
 
 
@@ -140,6 +182,12 @@
 			<id>repository.jboss.org</id>
 			<name>JBoss Repository</name>
 			<url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+		</repository>
+		<repository>
+			<id>maven2-repository.java.net</id>
+			<name>Java.net Repository for Maven</name>
+			<url>http://download.java.net/maven/2/</url>
+			<layout>default</layout>
 		</repository>
 	</repositories>
 

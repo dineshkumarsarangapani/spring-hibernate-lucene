@@ -19,7 +19,24 @@ import org.hibernate.search.annotations.Store;
 @Indexed
 public class Product {
 
-    @Id
+	
+	public static final Product getProduct(Product product) {
+		Product newprod = new Product();
+		newprod.setCategory(product.getCategory());
+		newprod.setCurrency(product.getCurrency());
+		newprod.setDescription(product.getDescription());
+		newprod.setId(product.getId());
+		newprod.setName(product.getName());
+		newprod.setPrice(product.getPrice());
+		newprod.setUom(product.getUom());
+		return newprod;
+	}
+	
+    public Product() {
+		
+	}
+
+	@Id
     @Column(name="ID")
     @GeneratedValue
     @DocumentId

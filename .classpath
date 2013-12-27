@@ -75,6 +75,6 @@
 	<classpathentry kind="lib" path="target/Customer/WEB-INF/lib/hibernate-search-4.3.0.Final.jar"/>
 	<classpathentry kind="lib" path="target/Customer/WEB-INF/lib/hibernate-search-analyzers-4.3.0.Final.jar"/>
 	<classpathentry kind="lib" path="target/Customer/WEB-INF/lib/hibernate-search-engine-4.3.0.Final.jar" sourcepath="C:/Users/Dineshkumar_s/.m2/repository/org/hibernate/hibernate-search-engine/4.3.0.Final/hibernate-search-engine-4.3.0.Final-sources.jar"/>
-	<classpathentry kind="lib" path="target/Customer/WEB-INF/lib/hibernate-search-orm-4.3.0.Final.jar"/>
+	<classpathentry kind="lib" path="target/Customer/WEB-INF/lib/hibernate-search-orm-4.3.0.Final.jar" sourcepath="C:/Users/Dineshkumar_s/.m2/repository/org/hibernate/hibernate-search-orm/4.3.0.Final/hibernate-search-orm-4.3.0.Final-sources.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -60,5 +60,8 @@
                 class="org.springframework.orm.hibernate3.HibernateTransactionManager">
         <beans:property name="sessionFactory" ref="sessionFactory" />
     </beans:bean>
+    
+   <!--  <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+    <bean id="ProductDao" class="com.lister.product.repository.ProductIndexerImpl"/> -->
 
 </beans:beans>

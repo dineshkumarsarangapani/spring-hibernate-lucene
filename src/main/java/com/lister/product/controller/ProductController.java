@@ -31,6 +31,8 @@ public class ProductController {
     @RequestMapping(value = "/product", method = RequestMethod.POST)
     public String addProduct(@ModelAttribute("SpringWeb")Product product, 
     ModelMap model) {
+       
+       productService.addProduct(product);
        model.addAttribute("name", product.getName());
        model.addAttribute("description", product.getDescription());
        model.addAttribute("id", product.getId());
@@ -38,7 +40,7 @@ public class ProductController {
        model.addAttribute("price", product.getPrice());
        model.addAttribute("uom", product.getUom());
        model.addAttribute("category", product.getCategory());
-       productService.addProduct(product);
+       model.addAttribute("productList",productService.listProduct());
        
        return "viewproduct";
     }

@@ -19,14 +19,11 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     ProductRepository ProductRepository;
     
-    @Autowired
-    ProductIndexer productindexer;
 
     @Override
     public void addProduct(Product product) {
         if(product != null){
             ProductRepository.addProduct(product);
-            productindexer.addProduct(product);
         }
         else {
             throw new NullPointerException("Product value can not be done!");
@@ -45,5 +42,13 @@ public class ProductServiceImpl implements ProductService {
             throw new IllegalArgumentException("Id value not properly formed!");
         else
             ProductRepository.removeProduct(id);
+    }
+    
+    @Override
+    public Product getProduct(Integer id) {
+        if(id < 0 || id == null)
+            throw new IllegalArgumentException("Id value not properly formed!");
+        else
+            return ProductRepository.getProduct(id);
     }
 }

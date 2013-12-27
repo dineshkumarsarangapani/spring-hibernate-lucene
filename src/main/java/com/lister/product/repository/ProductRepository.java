@@ -8,4 +8,5 @@ public interface ProductRepository {
     public void addProduct(Product Product);
     public List<Product> listProduct();
     public void removeProduct(Integer id);
+    public Product getProduct(Integer id);
 }
