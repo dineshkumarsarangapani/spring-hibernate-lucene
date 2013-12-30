@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.lister.product.model.Product;
 
 @Repository
 @Transactional
@@ -19,16 +18,15 @@ public class ProductIndexerImpl implements ProductIndexer {
     private SessionFactory sessionFactory;
 	
 	
-	public void addProduct(Product Product) {
+	public void indexProduct() {
 		Session session = sessionFactory.openSession();
-        
+		//EntityManager em = EntityManagerFactory.createEntityManager();
         FullTextSession fullTextSession = Search.getFullTextSession(session);
         try {
 			fullTextSession.createIndexer().startAndWait();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-         
         fullTextSession.close();
 	}
 }

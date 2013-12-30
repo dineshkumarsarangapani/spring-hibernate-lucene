@@ -3,6 +3,7 @@ package com.lister.product.service;
 import com.lister.product.model.Product;
 import com.lister.product.repository.ProductIndexer;
 import com.lister.product.repository.ProductRepository;
+import com.lister.product.repository.ProductSearcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,12 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     ProductRepository ProductRepository;
     
-
+    @Autowired
+    ProductIndexer productindexer;
+    
+    @Autowired
+    ProductSearcher productseacher;
+    
     @Override
     public void addProduct(Product product) {
         if(product != null){
@@ -51,4 +57,13 @@ public class ProductServiceImpl implements ProductService {
         else
             return ProductRepository.getProduct(id);
     }
+    
+    public void indexProduct() {
+    	productindexer.indexProduct();
+    }
+
+	@Override
+	public List<Product> searchProduct(String Name) {
+      return productseacher.searchProduct(Name);
+	}
 }

@@ -17,7 +17,7 @@
 			<!-- Hibernate search -->
 			<property name="hibernate.search.default.directory_provider"
                 value="filesystem" />
-            <property name="hibernate.search.default.indexBase" value="d:\lucene-index" />
+            <property name="hibernate.search.default.indexBase" value="D:\lucene-index" />
 			
 		</properties>
 	</persistence-unit>

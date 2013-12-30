@@ -25,12 +25,17 @@
         <td>${id}</td>
     </tr>
 </table>
+<table>
+<tr>
+        <td>Name</td>
+        <td>Description</td>
+    </tr>
 <c:forEach var="product" items="${productList}">
   <tr>
     <td>${product.name}</td>
     <td>${product.description}</td>
   </tr>
 </c:forEach>
- 
+</table> 
 </body>
 </html>

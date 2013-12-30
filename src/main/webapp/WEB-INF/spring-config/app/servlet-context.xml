@@ -42,7 +42,7 @@
                 p:password="${db.password}" />
 
     <beans:bean id="sessionFactory"
-                class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+                class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <beans:property name="dataSource" ref="dataSource" />
         <beans:property name="packagesToScan" value="com.lister.product"/>
         <beans:property name="hibernateProperties">
@@ -57,7 +57,7 @@
     <tx:annotation-driven />
 
     <beans:bean id="transactionManager"
-                class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+                class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <beans:property name="sessionFactory" ref="sessionFactory" />
     </beans:bean>
     

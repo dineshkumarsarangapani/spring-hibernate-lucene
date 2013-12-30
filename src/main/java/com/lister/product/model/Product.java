@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 import org.hibernate.search.annotations.Analyze;
 import org.hibernate.search.annotations.DocumentId;
 import org.hibernate.search.annotations.Field;
@@ -39,17 +40,18 @@ public class Product {
 	@Id
     @Column(name="ID")
     @GeneratedValue
-    @DocumentId
+    @DocumentId(name="id")
     private Integer id;
 
-    
+	@Field(index = Index.YES, analyze = Analyze.YES, store = Store.YES)
 	@Column(name="NAME")
     private String name;
 
-	
+	@Field(index = Index.YES, analyze = Analyze.YES, store = Store.YES)
     @Column(name="DESCRIPTION")
     private String description;
 
+    @Field(index = Index.YES, analyze = Analyze.YES, store = Store.YES)
     @Column(name="CATEGORY")
     private String category;
 
@@ -63,7 +65,6 @@ public class Product {
     private String currency;
 
 
-    @Field(index = Index.YES, analyze = Analyze.YES, store = Store.NO)
     public String getName() {
 		return name;
 	}
@@ -71,7 +72,6 @@ public class Product {
 		this.name = name;
 	}
 	
-	@Field(index=Index.YES)
 	public String getDescription() {
 		return description;
 	}

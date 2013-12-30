@@ -9,4 +9,6 @@ public interface ProductService {
         public List<Product> listProduct();
         public void removeProduct(Integer id);
 		public Product getProduct(Integer id);
+		public void indexProduct();
+		public List<Product> searchProduct(String Name);
 }

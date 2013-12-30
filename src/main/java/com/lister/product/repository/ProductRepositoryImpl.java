@@ -1,6 +1,8 @@
 package com.lister.product.repository;
 
 import com.lister.product.model.Product;
+
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,12 +24,14 @@ public class ProductRepositoryImpl implements ProductRepository {
 	}
 
 	public List<Product> listProduct() {
-		return sessionFactory.getCurrentSession().createQuery("from Product")
-				.list();
+         Session session = sessionFactory.openSession();
+         List<Product> returnprodlist = session.createQuery("from Product").list();
+         session.close();
+		return	returnprodlist;			
 	}
 
 	public void removeProduct(Integer id) {
-		Product product = (Product) sessionFactory.getCurrentSession().load(
+		Product product = (Product) sessionFactory.openSession().load(
 				Product.class, id);
 		if (null != product) {
 			sessionFactory.getCurrentSession().delete(product);
@@ -35,7 +39,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 	}
 
 	public Product getProduct(Integer id) {
-		Product product = (Product) sessionFactory.getCurrentSession().load(
+		Product product = (Product) sessionFactory.openSession().load(
 				Product.class, id);
 		// detaching the  product from session, to avoid lazy initialize problem
 		//sessionFactory.getCurrentSession().evict(product); 
