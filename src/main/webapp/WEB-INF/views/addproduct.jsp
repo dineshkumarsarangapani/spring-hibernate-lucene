@@ -10,7 +10,7 @@
 </head>
 <body>
 <h2>Add Product</h2>
-<form:form method="POST" action="/Customer/spring/product">
+<form:form method="POST" action="/demo/product/product">
    <table>
     <tr>
         <td><form:label path="name">Name of the product</form:label></td>

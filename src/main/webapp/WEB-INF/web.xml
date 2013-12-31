@@ -36,7 +36,7 @@
 
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
-		<url-pattern>/spring/*</url-pattern>
+		<url-pattern>/product/*</url-pattern>
 	</servlet-mapping>
 
 
@@ -62,13 +62,13 @@
 	<!-- org.codehaus.jackson.map.JsonMappingException: could not initialize 
 		proxy - no Session (through reference chain: com.lister.product.model.Product_$$_javassist_0["category"]) 
 		the object you are trying to serialize has lazy loaded component -->
-	<filter>
+	<!-- <filter>
 		<filter-name>hibernateFilter</filter-name>
 		<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>hibernateFilter</filter-name>
 		<url-pattern>/services/*</url-pattern>
-	</filter-mapping>
+	</filter-mapping> -->
 
 </web-app>

@@ -11,12 +11,12 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jetty.version>6.1.4</jetty.version>
-		<spring.version>3.2.0.RELEASE</spring.version>
-		<dependency.hibernate.version>4.1.9.Final</dependency.hibernate.version>
+		<spring.version>3.1.1.RELEASE</spring.version>
+		<dependency.hibernate.version>4.1.1.Final</dependency.hibernate.version>
 		<java.version>1.6</java.version>
 		<junit.version>4.8.2</junit.version>
 		<jackson.version>1.9.10</jackson.version>
-		<jersey.version>1.8</jersey.version>
+		<jersey.version>1.14</jersey.version>
 	</properties>
 
 	<dependencies>
@@ -166,26 +166,30 @@
 			<artifactId>jersey-spring</artifactId>
 			<version>${jersey.version}</version>
 			<exclusions>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-core</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-web</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-beans</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-context</artifactId>
-				</exclusion>
+				 <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-web</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-beans</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-context</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-aop</artifactId>
+                </exclusion>
 			</exclusions>
 		</dependency>
 
