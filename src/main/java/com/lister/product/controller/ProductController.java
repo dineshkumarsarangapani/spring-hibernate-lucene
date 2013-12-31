@@ -4,11 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.ws.rs.PathParam;
+
 import org.codehaus.jettison.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,6 +41,15 @@ public class ProductController {
 	@RequestMapping(value = "/addProduct", method = RequestMethod.GET)
 	public ModelAndView addProduct() {
 		return new ModelAndView("addproduct", "command", new Product());
+	}
+	
+	@RequestMapping(value = "/deleteProduct/{prodid}", method = RequestMethod.GET)
+	public @ResponseBody String deleteProduct(@PathVariable("prodid") int prodid) {
+		Product product = productService.getProduct(prodid);
+		if(null != product) {
+			productService.removeProduct(prodid);
+		}
+		return "Success";
 	}
 
 	@RequestMapping(value = "/indexproduct", method = RequestMethod.GET)

@@ -31,15 +31,16 @@ public class ProductRepositoryImpl implements ProductRepository {
 	}
 
 	public void removeProduct(Integer id) {
-		Product product = (Product) sessionFactory.openSession().load(
-				Product.class, id);
+		Product product = null;
+		product = (Product) sessionFactory.getCurrentSession().load(
+					Product.class, id);
 		if (null != product) {
 			sessionFactory.getCurrentSession().delete(product);
 		}
 	}
 
 	public Product getProduct(Integer id) {
-		Product product = (Product) sessionFactory.openSession().load(
+		Product product = (Product) sessionFactory.getCurrentSession().load(
 				Product.class, id);
 		// detaching the  product from session, to avoid lazy initialize problem
 		//sessionFactory.getCurrentSession().evict(product); 

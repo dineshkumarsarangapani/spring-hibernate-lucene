@@ -6,8 +6,28 @@
 		$('#search-button').click(function() {
 			fetchproductdata();
 		});
+		
+		$(document).on("click", ".delete-link", function() {
+			var prodid = $(this).attr('productid');
+			var confirmbox = confirm("Are you sure about deleting the prod?");
+			if(confirmbox==true) {
+				deleteproduct(prodid);	
+			}
+		});
 	});
+	
 
+	
+	function deleteproduct(id) {
+		$.ajax({
+			url : '/demo/product/deleteProduct/' + id
+		}).fail(function() {
+			alert("Unable to delete the Product.");
+		}).done(function(data) {
+			$('#'+id+'-product-row').hide("slow")
+		});
+	}
+	
 	function fetchproductdata() {
 		// demo/services/product/list
 		$('#loading-image').show();

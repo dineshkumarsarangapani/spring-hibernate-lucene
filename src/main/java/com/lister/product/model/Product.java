@@ -76,8 +76,8 @@ public class Product implements Serializable{
     @Column(name="CURRENCY")
     private String currency;
     
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<ProductVariant> productvariants; // one-to-many
+    //@OneToMany(fetch = FetchType.LAZY)
+    //private List<ProductVariant> productvariants; // one-to-many
 
 
     public String getName() {
@@ -131,11 +131,11 @@ public class Product implements Serializable{
 				+ ", uom=" + uom + ", currency=" + currency + "]";
 	}
 
-	public List<ProductVariant> getProductvariants() {
+	/*public List<ProductVariant> getProductvariants() {
 		return productvariants;
 	}
 
 	public void setProductvariants(List<ProductVariant> productvariants) {
 		this.productvariants = productvariants;
-	}
+	}*/
 }
