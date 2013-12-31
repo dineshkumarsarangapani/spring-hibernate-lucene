@@ -15,8 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.common.collect.Lists;
+import com.lister.product.enums.ProductType;
 import com.lister.product.model.Product;
+import com.lister.product.model.ProductVariant;
 import com.lister.product.service.ProductService;
+import com.lister.product.service.ProductVariantService;
 
 /**
  * @author sample controller code
@@ -27,9 +31,12 @@ public class ProductController {
 
 	@Autowired
 	ProductService productService;
+	
+	@Autowired
+	ProductVariantService productvariantservice;
 
 	@RequestMapping(value = "/addProduct", method = RequestMethod.GET)
-	public ModelAndView student() {
+	public ModelAndView addProduct() {
 		return new ModelAndView("addproduct", "command", new Product());
 	}
 
@@ -66,6 +73,23 @@ public class ProductController {
 		model.addAttribute("category", product.getCategory());
 		model.addAttribute("productList", productService.listProduct());
 
-		return "home";
+		return "redirect:home";
 	}
+	
+	@RequestMapping(value = "/addProductVariant", method = RequestMethod.GET)
+	public ModelAndView addProductVaiant() {
+		ModelAndView mav = new ModelAndView("addproductvariant", "command", new ProductVariant());
+   	    return mav;
+	}
+	
+	@RequestMapping(value = "/productvariant", method = RequestMethod.POST)
+	public String addProductVariant(@ModelAttribute("SpringWeb") ProductVariant productvariant,
+			ModelMap model) {
+
+		productvariantservice.addProductVariant(productvariant);
+
+		return "redirect:home";
+	}
+	
+	
 }

@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
@@ -42,9 +43,11 @@ public class ProductVariant implements Serializable {
 	@Column(name="VARIANT_COLOR")
 	private String color;
 	
-	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID", nullable = false)
 	private Product product;
 	
+	@Id
 	@Field(index = Index.YES, analyze = Analyze.YES, store = Store.YES)
 	@Column(name="VARIANTID")
 	@GeneratedValue
@@ -75,8 +78,7 @@ public class ProductVariant implements Serializable {
 		this.color = color;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ID", nullable = false)
+	
 	public Product getProduct() {
 		return product;
 	}
@@ -97,5 +99,16 @@ public class ProductVariant implements Serializable {
 
 	public void setVariantID(Integer variantID) {
 		this.variantID = variantID;
+	}
+
+	public static ProductVariant getProductVariant(ProductVariant product) {
+		ProductVariant prodvar = new ProductVariant();
+		prodvar.setColor(product.getColor());
+		prodvar.setProduct(product.getProduct());
+		prodvar.setSize(product.getSize());
+		prodvar.setType(product.getType());
+		prodvar.setVariantID(product.getVariantID());
+		
+		return prodvar;
 	}
 }

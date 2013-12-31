@@ -1,12 +1,15 @@
 package com.lister.product.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.OneToMany;
 
 
 import org.hibernate.search.annotations.Analyze;
@@ -21,7 +24,6 @@ import org.hibernate.search.annotations.Store;
 @Entity
 @Table(name="products")
 @Indexed
-@Analyzer(impl = EntityAnalyzer.class)
 public class Product implements Serializable{
 
 	
@@ -59,7 +61,6 @@ public class Product implements Serializable{
 
 	@Field(index = Index.YES, analyze = Analyze.YES, store = Store.YES)
     @Column(name="DESCRIPTION")
-	@Analyzer(impl = PropertyAnalyzer.class)
     private String description;
 
     @Field(index = Index.YES, analyze = Analyze.YES, store = Store.YES)
@@ -74,6 +75,9 @@ public class Product implements Serializable{
     
     @Column(name="CURRENCY")
     private String currency;
+    
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<ProductVariant> productvariants; // one-to-many
 
 
     public String getName() {
@@ -125,5 +129,13 @@ public class Product implements Serializable{
 		return "Product [id=" + id + ", name=" + name + ", description="
 				+ description + ", category=" + category + ", price=" + price
 				+ ", uom=" + uom + ", currency=" + currency + "]";
+	}
+
+	public List<ProductVariant> getProductvariants() {
+		return productvariants;
+	}
+
+	public void setProductvariants(List<ProductVariant> productvariants) {
+		this.productvariants = productvariants;
 	}
 }
