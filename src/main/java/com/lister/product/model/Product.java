@@ -1,5 +1,7 @@
 package com.lister.product.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +10,7 @@ import javax.persistence.Table;
 
 
 import org.hibernate.search.annotations.Analyze;
+import org.hibernate.search.annotations.Analyzer;
 import org.hibernate.search.annotations.DocumentId;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Index;
@@ -18,9 +21,16 @@ import org.hibernate.search.annotations.Store;
 @Entity
 @Table(name="products")
 @Indexed
-public class Product {
+@Analyzer(impl = EntityAnalyzer.class)
+public class Product implements Serializable{
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2531201081411600271L;
+
+
 	public static final Product getProduct(Product product) {
 		Product newprod = new Product();
 		newprod.setCategory(product.getCategory());
@@ -49,6 +59,7 @@ public class Product {
 
 	@Field(index = Index.YES, analyze = Analyze.YES, store = Store.YES)
     @Column(name="DESCRIPTION")
+	@Analyzer(impl = PropertyAnalyzer.class)
     private String description;
 
     @Field(index = Index.YES, analyze = Analyze.YES, store = Store.YES)

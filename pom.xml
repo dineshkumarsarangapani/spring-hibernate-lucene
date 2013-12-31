@@ -96,7 +96,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-search</artifactId>
-			<version>4.1.1.Final</version>
+			<version>${dependency.hibernate.version}</version>
 		</dependency>
 		
 		<dependency>
@@ -104,13 +104,13 @@
 			<artifactId>hibernate-search-analyzers</artifactId>
 			<!-- When removing the <parent> node you will have to explicitly set the 
 				hibernate-search version -->
-			<version>4.1.1.Final</version>
+			<version>${dependency.hibernate.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-search-infinispan</artifactId>
-			<version>4.1.1.Final</version>
+			<version>${dependency.hibernate.version}</version>
 		</dependency>
 
 		<!-- Hibernate library dependency end -->

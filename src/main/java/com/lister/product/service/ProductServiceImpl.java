@@ -1,9 +1,10 @@
 package com.lister.product.service;
 
+import com.lister.product.index.ProductIndexer;
 import com.lister.product.model.Product;
-import com.lister.product.repository.ProductIndexer;
 import com.lister.product.repository.ProductRepository;
-import com.lister.product.repository.ProductSearcher;
+import com.lister.product.search.ProductSearcher;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

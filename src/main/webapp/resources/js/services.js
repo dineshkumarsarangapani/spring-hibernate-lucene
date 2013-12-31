@@ -11,7 +11,9 @@
 	function fetchproductdata() {
 		// demo/services/product/list
 		$('#loading-image').show();
-		var url = "searchproduct?name=" + $('#search-box').val()
+		$('#search-error').text();
+		//var url = "searchproduct?name=" + $('#search-box').val()
+		var url = "/demo/services/product/search/" + $('#search-box').val()
 		if ($('#search-box').val() == '') {
 			url = '/demo/services/product/list';
 		}
@@ -20,6 +22,7 @@
 			url : url
 		}).fail(function() {
 			$('#search-error').text('Error in searching the data')
+			$('#loading-image').hide();
 		}).done(function(data) {
 			populate_table_data(data);
 			$('#loading-image').hide();
