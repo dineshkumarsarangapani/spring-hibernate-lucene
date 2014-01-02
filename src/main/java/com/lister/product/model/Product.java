@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.OneToMany;
 
 
+import org.hibernate.annotations.Type;
 import org.hibernate.search.annotations.Analyze;
 import org.hibernate.search.annotations.Analyzer;
 import org.hibernate.search.annotations.DocumentId;
@@ -61,6 +62,7 @@ public class Product implements Serializable{
 
 	@Field(index = Index.YES, analyze = Analyze.YES, store = Store.YES)
     @Column(name="DESCRIPTION")
+	@Type(type="org.hibernate.type.StringClobType")
     private String description;
 
     @Field(index = Index.YES, analyze = Analyze.YES, store = Store.YES)
@@ -76,8 +78,8 @@ public class Product implements Serializable{
     @Column(name="CURRENCY")
     private String currency;
     
-    //@OneToMany(fetch = FetchType.LAZY)
-    //private List<ProductVariant> productvariants; // one-to-many
+
+    private List<ProductVariant> productvariants; // one-to-many
 
 
     public String getName() {
@@ -131,11 +133,11 @@ public class Product implements Serializable{
 				+ ", uom=" + uom + ", currency=" + currency + "]";
 	}
 
-	/*public List<ProductVariant> getProductvariants() {
+	public List<ProductVariant> getProductvariants() {
 		return productvariants;
 	}
 
 	public void setProductvariants(List<ProductVariant> productvariants) {
 		this.productvariants = productvariants;
-	}*/
+	}
 }

@@ -14,6 +14,19 @@
 				deleteproduct(prodid);	
 			}
 		});
+		
+		$('#re-index').click(function(){
+			$.ajax({
+				url : '/demo/product/indexproduct'
+			}).fail(function() {
+				alert("Unable to Re-Index Data.");
+			}).done(function(data) {
+				alert("Re-Index Sucess");
+			});
+		});
+		
+		$('#prod_id').val(getParameterByName('prodId'));
+		
 	});
 	
 
@@ -59,17 +72,27 @@
 			row += "<td>" + value.price + "</td>"
 			row += "<td>" + value.uom + "</td>"
 			row += "<td>" + value.currency + "</td>"
+			addVariant = '<a productId="'
+				+ value.id
+				+ '" class="addvariant-link" href="/demo/product/addProductVariant?prodId='+value.id+'" >Add Variant</a>'
 			editlink = '<a productId="'
 					+ value.id
 					+ '" class="edit-link" href="javascript:void(0);" >Edit</a>'
 			deletelink = '<a productId="'
 					+ value.id
 					+ '" class="delete-link"  href="javascript:void(0);" >Delete</a>'
-			row += "<td>" + editlink + ' / ' + deletelink
+			row += "<td>" + editlink + ' | ' + deletelink + ' | ' + addVariant
 					+ "</td>"
 			row += "</tr>"
 		});
 		$("#tbody-data").html(row);
+	}
+	
+	function getParameterByName(name) {
+	    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+	        results = regex.exec(location.search);
+	    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 	}
 
 })(jQuery);

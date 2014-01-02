@@ -1,5 +1,6 @@
 package com.lister.product.controller;
 
+import java.text.Normalizer.Form;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +9,7 @@ import javax.ws.rs.PathParam;
 
 import org.codehaus.jettison.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.common.collect.Lists;
 import com.lister.product.enums.ProductType;
@@ -73,6 +76,7 @@ public class ProductController {
 	
 	@RequestMapping(value = "/product", method = RequestMethod.POST)
 	public String addProduct(@ModelAttribute("SpringWeb") Product product,
+			RedirectAttributes ra,
 			ModelMap model) {
 
 		productService.addProduct(product);
@@ -95,9 +99,11 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/productvariant", method = RequestMethod.POST)
-	public String addProductVariant(@ModelAttribute("SpringWeb") ProductVariant productvariant,
+	public String addProductVariant(@ModelAttribute("SpringWeb") ProductVariant productvariant, 
+			RedirectAttributes ra,
 			ModelMap model) {
 
+		productvariant.setProduct(productService.getProduct(productvariant.getProdId()));
 		productvariantservice.addProductVariant(productvariant);
 
 		return "redirect:home";

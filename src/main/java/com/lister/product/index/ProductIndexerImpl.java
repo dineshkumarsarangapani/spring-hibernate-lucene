@@ -19,7 +19,7 @@ public class ProductIndexerImpl implements ProductIndexer {
 	
 	
 	public void indexProduct() {
-		Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 		//EntityManager em = EntityManagerFactory.createEntityManager();
         FullTextSession fullTextSession = Search.getFullTextSession(session);
         try {
@@ -27,6 +27,6 @@ public class ProductIndexerImpl implements ProductIndexer {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-        fullTextSession.close();
+        //fullTextSession.close();
 	}
 }

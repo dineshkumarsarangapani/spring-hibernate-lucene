@@ -17,6 +17,7 @@ You can <a href="addProduct">create a product </a> and Search a product.
 <img style="display:none;" id="loading-image" alt="Fetching Products" src="resources/images/loading.gif" />	
 <span class="search-error" id="search-error"></span>
 <br />
+<a href="JavaScript:void(0);" id="re-index">Re-Index Data</a>
 <h3>Here are the list of products fetched from services and search result</h3>
 <div id="search-result">
 <table id="hor-minimalist-b">
